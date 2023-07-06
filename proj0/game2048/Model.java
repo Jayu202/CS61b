@@ -114,7 +114,8 @@ public class Model extends Observable {
         // TODO: Modify this.board (and perhaps this.score) to account
         // for the tilt to the Side SIDE. If the board changed, set the
         // changed local variable to true.
-        if(side.equals(Side.NORTH)){
+
+            board.setViewingPerspective(side);{
             for (int i = 0; i < 4; i++) {//循环4列
                 for (int j = 3; j > 0; j--) {//从上到下循环四行
                     Tile t = board.tile(i,j-1);
@@ -155,136 +156,8 @@ public class Model extends Observable {
                 }
             }
         }
-        else if(side.equals(Side.EAST)){
-            board.setViewingPerspective(Side.EAST);
-            for (int i = 0; i < 4; i++) {//循环4列
-                for (int j = 3; j > 0; j--) {//从上到下循环四行
-                    Tile t = board.tile(i,j-1);
-                    if(board.tile(i,j)==null){//如果第i列j行为空
-                        for (int k = j-1; k >= 0; k--) {//循环tile（i,j）下面元素
-                            if(board.tile(i,k)!=null){//找非空元素
-                                t = board.tile(i,k);
-                                board.move(i,j,t);//把非空元素移动到上面空位
-                                for (int l = k-1; l >=0; l--) {//移动完后，检查下面那个元素值是否相同
-                                    if(board.tile(i,l)!=null){ //下面第一个不为空的元素
-                                        if(board.tile(i,l).value()==board.tile(i,j).value()){ //如果这个元素等于tile（i，j）
-                                            t = board.tile(i,l);
-                                            board.move(i,j,t);
-                                            score += t.value()*2;
-                                            changed = true;
-                                        }break;
-                                    }
-                                }
-                            }
-                        }
-                        changed = true;
-                    }
-                    else {//如果第i行j列不为空
-                        for (int k = j-1; k >= 0 ; k--) {//找tlie（i，j）下的第一个非空元素
-                            if(board.tile(i,k)!=null){
-                                if(board.tile(i,k)!=null){
-                                    if(board.tile(i,k).value()==board.tile(i,j).value()) {
-                                        t = board.tile(i, k);
-                                        board.move(i, j, t);
-                                        score += t.value() * 2;
-                                        changed = true;
-                                    }
-                                    break;
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-            board.setViewingPerspective(Side.NORTH);
-        }
-        else if(side.equals(Side.SOUTH)){
-            board.setViewingPerspective(Side.SOUTH);
-            for (int i = 0; i < 4; i++) {//循环4列
-                for (int j = 3; j > 0; j--) {//从上到下循环四行
-                    Tile t = board.tile(i,j-1);
-                    if(board.tile(i,j)==null){//如果第i列j行为空
-                        for (int k = j-1; k >= 0; k--) {//循环tile（i,j）下面元素
-                            if(board.tile(i,k)!=null){//找非空元素
-                                t = board.tile(i,k);
-                                board.move(i,j,t);//把非空元素移动到上面空位
-                                for (int l = k-1; l >=0; l--) {//移动完后，检查下面那个元素值是否相同
-                                    if(board.tile(i,l)!=null){ //下面第一个不为空的元素
-                                        if(board.tile(i,l).value()==board.tile(i,j).value()){ //如果这个元素等于tile（i，j）
-                                            t = board.tile(i,l);
-                                            board.move(i,j,t);
-                                            score += t.value()*2;
-                                            changed = true;
-                                        }break;
-                                    }
-                                }
-                            }
-                        }
-                        changed = true;
-                    }
-                    else {//如果第i行j列不为空
-                        for (int k = j-1; k >= 0 ; k--) {//找tlie（i，j）下的第一个非空元素
-                            if(board.tile(i,k)!=null){
-                                if(board.tile(i,k)!=null){
-                                    if(board.tile(i,k).value()==board.tile(i,j).value()) {
-                                        t = board.tile(i, k);
-                                        board.move(i, j, t);
-                                        score += t.value() * 2;
-                                        changed = true;
-                                    }
-                                    break;
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-            board.setViewingPerspective(Side.NORTH);
-        }
-        else {
-            board.setViewingPerspective(Side.WEST);
-            for (int i = 0; i < 4; i++) {//循环4列
-                for (int j = 3; j > 0; j--) {//从上到下循环四行
-                    Tile t = board.tile(i,j-1);
-                    if(board.tile(i,j)==null){//如果第i列j行为空
-                        for (int k = j-1; k >= 0; k--) {//循环tile（i,j）下面元素
-                            if(board.tile(i,k)!=null){//找非空元素
-                                t = board.tile(i,k);
-                                board.move(i,j,t);//把非空元素移动到上面空位
-                                for (int l = k-1; l >=0; l--) {//移动完后，检查下面那个元素值是否相同
-                                    if(board.tile(i,l)!=null){ //下面第一个不为空的元素
-                                        if(board.tile(i,l).value()==board.tile(i,j).value()){ //如果这个元素等于tile（i，j）
-                                            t = board.tile(i,l);
-                                            board.move(i,j,t);
-                                            score += t.value()*2;
-                                            changed = true;
-                                        }break;
-                                    }
-                                }
-                            }
-                        }
-                        changed = true;
-                    }
-                    else {//如果第i行j列不为空
-                        for (int k = j-1; k >= 0 ; k--) {//找tlie（i，j）下的第一个非空元素
-                            if(board.tile(i,k)!=null){
-                                if(board.tile(i,k)!=null){
-                                    if(board.tile(i,k).value()==board.tile(i,j).value()) {
-                                        t = board.tile(i, k);
-                                        board.move(i, j, t);
-                                        score += t.value() * 2;
-                                        changed = true;
-                                    }
-                                    break;
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-            board.setViewingPerspective(Side.NORTH);
+        board.setViewingPerspective(Side.NORTH);
 
-        }
 
         checkGameOver();
         if (changed) {
