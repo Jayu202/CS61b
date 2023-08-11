@@ -14,13 +14,13 @@ public class ArrayDeque<T> {
 
     public ArrayDeque(T x){
         size = 1;
-        items = (T[]) new Object[100];
-        items[0] = x;
+        items = (T[]) new Object[8];
+        items[5] = x;
         nextFirst = 4;
         nextLast = 6;
     }
 
-    private void resize(int capacity){
+    public void resize(int capacity){
         T[] a = (T[])new Object[capacity];
 //        System.arraycopy(items,0,a,0,items.length);
 //        items = a;
@@ -36,7 +36,7 @@ public class ArrayDeque<T> {
 
     }
 
-    private int arrayInd(int ind){
+    public int arrayInd(int ind){
         if(nextFirst+1+ind>= items.length){
             return nextFirst+1+ind- items.length;
         }
@@ -116,5 +116,23 @@ public class ArrayDeque<T> {
     {
         if(index > size)return null;
         return items[index];
+    }
+
+    public static void main(String[] args) {
+        ArrayDeque<Integer> ll = new ArrayDeque<>(1);
+        ll.addFirst(2);
+        ll.addFirst(3);
+        ll.addFirst(4);
+        ll.addFirst(4);
+        ll.addFirst(4);
+        ll.addFirst(4);
+        ll.removeFirst();
+        ll.removeFirst();
+        ll.removeFirst();
+        ll.addFirst(4);
+        ll.addFirst(4);
+        ll.addFirst(4);
+        System.out.println(ll);
+
     }
 }
