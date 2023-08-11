@@ -114,8 +114,8 @@ public class ArrayDeque<T> {
 
     public T get(int index)
     {
-        if(index > size)return null;
-        return items[index];
+        int ind = arrayInd(index);
+        return items[ind];
     }
 
     public static void main(String[] args) {
