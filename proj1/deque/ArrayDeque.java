@@ -1,6 +1,6 @@
 package deque;
 
-public class ArrayDeque<T> {
+public class ArrayDeque<T> implements Deque<T>{
     int size;
     T[] items;
     int nextFirst;
@@ -45,6 +45,7 @@ public class ArrayDeque<T> {
         }
     }
 
+    @Override
     public void addFirst(T item){
         if(size == items.length-2)resize(items.length*2);
         if(nextFirst == 0){
@@ -58,6 +59,7 @@ public class ArrayDeque<T> {
         size++;
     }
     //: 添加一个类型的项目T到双端队列的前面。你可以假设那item是 never null。
+    @Override
     public T removeFirst(){
         if(isEmpty())return null;
 
@@ -68,6 +70,7 @@ public class ArrayDeque<T> {
         return  x;
     }
         //：删除并返回双端队列前面的项目。如果不存在这样的项目，则返回null。
+    @Override
     public void addLast(T item)
     {
         if(size == items.length - 2)resize(items.length * 2);
@@ -80,6 +83,7 @@ public class ArrayDeque<T> {
         }
         size++;
     }
+    @Override
     public T removeLast()
     {
         if(isEmpty())return null;
@@ -91,17 +95,20 @@ public class ArrayDeque<T> {
         return x;
     }
 
+    @Override
     public boolean isEmpty()
     {
         if(size == 0)return true;
         else return false;
     }
 
+    @Override
     public int size()
     {
         return size;
     }
 
+    @Override
     public void printDeque()
     //: 从头到尾打印双端队列中的项目，以空格分隔。打印完所有项目后，打印出新的一行。
     {
@@ -109,9 +116,7 @@ public class ArrayDeque<T> {
             System.out.println(items[arrayInd(i)]);
         }
     }
-
-
-
+    @Override
     public T get(int index)
     {
         int ind = arrayInd(index);
