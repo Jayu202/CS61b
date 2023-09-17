@@ -123,21 +123,21 @@ public class ArrayDeque<T> implements Deque<T>{
         return items[ind];
     }
 
-    public static void main(String[] args) {
-        ArrayDeque<Integer> ll = new ArrayDeque<>(1);
-        ll.addFirst(2);
-        ll.addFirst(3);
-        ll.addFirst(4);
-        ll.addFirst(4);
-        ll.addFirst(4);
-        ll.addFirst(4);
-        ll.removeFirst();
-        ll.removeFirst();
-        ll.removeFirst();
-        ll.addFirst(4);
-        ll.addFirst(4);
-        ll.addFirst(4);
-        System.out.println(ll);
-
-    }
+//    public static void main(String[] args) {
+//        ArrayDeque<Integer> ll = new ArrayDeque<>(1);
+//        ll.addFirst(2);
+//        ll.addFirst(3);
+//        ll.addFirst(4);
+//        ll.addFirst(4);
+//        ll.addFirst(4);
+//        ll.addFirst(4);
+//        ll.removeFirst();
+//        ll.removeFirst();
+//        ll.removeFirst();
+//        ll.addFirst(4);
+//        ll.addFirst(4);
+//        ll.addFirst(4);
+//        System.out.println(ll);
+//
+//    }
 }
