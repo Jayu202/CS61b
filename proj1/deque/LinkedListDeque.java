@@ -86,10 +86,10 @@ public class LinkedListDeque<T> implements Deque<T>,Iterable<T>{
 
     @Override
     public Iterator<T> iterator() {
-        return new LinklistIetrator();
+        return new linklistIterator();
     }
 
-    private class LinklistIetrator implements Iterator<T>{
+    private class linklistIterator implements Iterator<T>{
         int wizPos = 0;
          public boolean hasNext(){
             return wizPos < size;
