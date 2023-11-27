@@ -20,13 +20,12 @@ public class TestBSTMap {
 
     //assumes put/size/containsKey/get work
     @Test
-    public void sanityClearTest() {
+    public void sanityClearTest() {//11.26日晚报错，可能是get方法出问题，下次上线任务：设断点调试
     	BSTMap<String, Integer> b = new BSTMap<String, Integer>();
         for (int i = 0; i < 455; i++) {
             b.put("hi" + i, 1+i);
             //make sure put is working via containsKey and get
-            assertTrue( null != b.get("hi" + i) && (b.get("hi"+i).equals(1+i))
-                        && b.containsKey("hi" + i));
+            assertTrue( null != b.get("hi" + i) && (b.get("hi"+i).equals(1+i)) && b.containsKey("hi" + i));
         }
         assertEquals(455, b.size());
         b.clear();
